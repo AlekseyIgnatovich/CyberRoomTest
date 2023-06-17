@@ -24,7 +24,7 @@ public class GameplayState : BaseGameState
 		_stock = new Stock(_gameManager.GameSettings);
 		
 		_gameplayScreen = _gameManager.UiManager.ShowView<GameplayScreen>();
-		_gameplayScreen.Init(_gameManager.DataModel);
+		_gameplayScreen.Init(_gameManager.DataModel, _gameManager.GameSettings, _stock);
 
 		_inputController = GameObject.FindObjectOfType<InputController>();
 		_inputController.OnClickedBuilding += OnSelectBuilding;

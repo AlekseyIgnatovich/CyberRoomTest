@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameplayScreen : UIBaseView
 {
     [SerializeField] private TextMeshProUGUI _moneys;
+    [SerializeField] private StockWidget _stockWidget;
     
     private DataModel _dataModel;
     
@@ -15,20 +16,22 @@ public class GameplayScreen : UIBaseView
         ShowMoneys(0);
     }
 
-    public override void Close()
-    {
-        base.Close();
-        _dataModel.Moneys.OnChanged -= ShowMoneys;
-    }
-
-    public void Init(DataModel dataModel)
+    public void Init(DataModel dataModel, GameSettings settings, Stock stock)
     {
         _dataModel = dataModel;
         _dataModel.Moneys.OnChanged += ShowMoneys;
+        
+        _stockWidget.Init(settings, stock);
     }
 
     private void ShowMoneys(int moneys)
     {
         _moneys.text = string.Format("$: {0}", moneys);
+    }
+    
+    public override void Close()
+    {
+        base.Close();
+        _dataModel.Moneys.OnChanged -= ShowMoneys;
     }
 }
