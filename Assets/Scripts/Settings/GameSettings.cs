@@ -21,6 +21,7 @@ public class GuiSettings
    public GameObject GameplayScreen;
    public GameObject ResourceBuildingWindow;
    public GameObject CraftBuildingWindow;
+   public GameObject MarketBuildingWindow;
 }
 
 [Serializable]
@@ -30,6 +31,7 @@ public class ResourceSettings
    public Sprite Icon;
    public int CraftRate;
    public ResourceType Type;
+   public int Price;
 
    public CraftMaterial[] CraftMaterials;
 }

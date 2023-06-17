@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +10,8 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
+		DontDestroyOnLoad(gameObject);
+		
 		DataModel = new DataModel();
 		UiManager = new UIManager(GameSettings.GuiSettings);
 		
@@ -41,5 +40,4 @@ public class GameManager : MonoBehaviour
 		
 		_gameState.Enter();
 	}
-	
 }

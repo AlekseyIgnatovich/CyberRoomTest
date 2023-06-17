@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,11 +14,11 @@ public class ResourceBuildingWindow : UIBaseView
     {
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(building._inProgress);
+        _startButton.Init(building.ItemInProgress);
         _startButton.OnStarted += OnStarted;
 
-        _resourceButton.Init(building._productionItem, resourceSettings);
-        _resourceButton.Lock(building._inProgress);
+        _resourceButton.Init(resourceSettings, building._productionItem);
+        _resourceButton.Lock(building.ItemInProgress);
     }
 
     private void OnStarted(bool start)
@@ -32,7 +30,6 @@ public class ResourceBuildingWindow : UIBaseView
         }
 
         OnProductionStarted?.Invoke(start, _resourceButton.SelectedResource);
-        
         _resourceButton.Lock(start);
     }
 }

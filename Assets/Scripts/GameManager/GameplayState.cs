@@ -27,13 +27,13 @@ public class GameplayState : BaseGameState
 		_gameplayScreen.Init(_gameManager.DataModel, _gameManager.GameSettings, _stock);
 
 		_inputController = GameObject.FindObjectOfType<InputController>();
-		_inputController.OnClickedBuilding += OnSelectBuilding;
+		_inputController.OnClickedBuilding += OnBuildingSelected;
 		
 		_buildingsManager = GameObject.FindObjectOfType<BuildingsManager >();
 		_buildingsManager.Init(_gameManager.GameSettings, _gameManager.DataModel, _stock);
 	}
 
-	private void OnSelectBuilding(Building building)
+	private void OnBuildingSelected(Building building)
 	{
 		if (building.BuildingType == BuildingType.Resources)//Todo: switch
 		{
@@ -44,6 +44,11 @@ public class GameplayState : BaseGameState
 		{
 			new CraftBuildingPresenter(_gameManager.GameSettings.ResourceSettings,
 				_gameManager.DataModel, _gameManager.UiManager, (CraftBuilding)building);
+		}
+		else if (building.BuildingType == BuildingType.Market)
+		{
+			new MarketBuildingPresenter(_gameManager.GameSettings.ResourceSettings,
+				_gameManager.DataModel, _gameManager.UiManager, _stock);
 		}
 	}
 

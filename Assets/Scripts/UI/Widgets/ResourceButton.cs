@@ -7,10 +7,9 @@ public class ResourceButton : MonoBehaviour
 {
     public event Action<string> OnChanged;
 
-    public string SelectedResource { get
-        {
-            return _resourceIndex == -1 ? string.Empty : _resourceSettings[_resourceIndex].Name;
-        }
+    public string SelectedResource
+    {
+        get { return _resourceIndex == -1 ? string.Empty : _resourceSettings[_resourceIndex].Name; }
     }
 
     [SerializeField] private Image _icon;
@@ -20,7 +19,7 @@ public class ResourceButton : MonoBehaviour
     private ResourceSettings[] _resourceSettings;
     private int _resourceIndex = -1;
     private bool _locked;
-    
+
     void Awake()
     {
         _button.onClick.AddListener(OnClick);
@@ -35,17 +34,17 @@ public class ResourceButton : MonoBehaviour
 
         _resourceIndex++;
         _resourceIndex %= _resourceSettings.Length;
-        
+
         var res = _resourceSettings[_resourceIndex];
         _icon.sprite = res.Icon;
-        
+
         OnChanged?.Invoke(res.Name);
     }
 
-    public void Init(string selectedItem, ResourceSettings[] resourceSettings)
+    public void Init(ResourceSettings[] resourceSettings, string selectedItem)
     {
-        _resourceSettings = resourceSettings.Where(r=>r.Type == _resourceType).ToArray();
-        
+        _resourceSettings = resourceSettings.Where(r => r.Type == _resourceType).ToArray();
+
         if (!string.IsNullOrEmpty(selectedItem))
         {
             _resourceIndex = Array.FindIndex(_resourceSettings, (r) => r.Name == selectedItem);
@@ -53,7 +52,7 @@ public class ResourceButton : MonoBehaviour
             _icon.sprite = res.Icon;
         }
     }
-    
+
     public void Lock(bool locked)
     {
         _locked = locked;

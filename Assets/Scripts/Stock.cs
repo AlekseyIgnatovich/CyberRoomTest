@@ -1,33 +1,42 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Stock
 {
     public event Action<string, int> OnGoodChamnged;
 
-    public Dictionary<string, int> Goods;
+    private Dictionary<string, int> _goods;
 
     public Stock(GameSettings gameSettings)
     {
-        Goods = new Dictionary<string, int>();
+        _goods = new Dictionary<string, int>();
         foreach (var item in gameSettings.ResourceSettings)
         {
-            Goods.Add(item.Name, 0);
+            _goods.Add(item.Name, 0);
         }
     }
     
-    public void AddStockItem(string good, int count)
+    public int GetItemsCount(string good)
     {
-        Goods[good] += count;
-        OnGoodChamnged?.Invoke(good, Goods[good]);
+        return _goods[good];
     }
     
-    public void RemoveStockItem(string good, int count)
+    public void AddItem(string good, int count)
     {
-        Goods[good] -= count;
-        OnGoodChamnged?.Invoke(good, Goods[good]);
+        _goods[good] += count;
+        OnGoodChamnged?.Invoke(good, _goods[good]);
+    }
+    
+    public void RemoveItem(string good, int count)
+    {
+        if (_goods[good] < count)
+        {
+            Debug.LogError($"Can't, remove {count} {good} from {_goods[good]}");
+            return;
+        }
+        
+        _goods[good] -= count;
+        OnGoodChamnged?.Invoke(good, _goods[good]);
     }
 }

@@ -17,26 +17,31 @@ MonoBehaviour:
     MainMenuWindow: {fileID: 4260014542442308746, guid: 89427668c8e204136bdc97ac5f7d5325, type: 3}
     GameplayScreen: {fileID: 1461109163702730833, guid: 5e20165ac49c64314b3d6198ac00207d, type: 3}
     ResourceBuildingWindow: {fileID: 5688482236225564607, guid: 161b1ecb7e023414baec12cd0fa6173a, type: 3}
+    CraftBuildingWindow: {fileID: 5591945424853420989, guid: 83361d3df924141c08c45ac57c9598f2, type: 3}
   ResourceSettings:
   - Name: Stone
     Icon: {fileID: 21300000, guid: f4cb51d82d81a4e21a91dad067e455a0, type: 3}
     CraftRate: 60
     Type: 0
+    Price: 0
     CraftMaterials: []
   - Name: Wood
     Icon: {fileID: 21300000, guid: a30f7888d8a7340a38c296b0a584598d, type: 3}
     CraftRate: 60
     Type: 0
+    Price: 0
     CraftMaterials: []
   - Name: Steel
     Icon: {fileID: 21300000, guid: 1495df9416e8d473a88820c3ab865879, type: 3}
     CraftRate: 60
     Type: 0
+    Price: 0
     CraftMaterials: []
   - Name: Pitchfork
     Icon: {fileID: 21300000, guid: dd8504bc8e4ee43869e5c895699db187, type: 3}
     CraftRate: 10
     Type: 1
+    Price: 0
     CraftMaterials:
     - Name: Steel
       Count: 5
@@ -46,6 +51,7 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: cc8fe7d235e4240b4ba21fd229bb0a1e, type: 3}
     CraftRate: 10
     Type: 1
+    Price: 0
     CraftMaterials:
     - Name: Stone
       Count: 5
@@ -55,6 +61,7 @@ MonoBehaviour:
     Icon: {fileID: 21300000, guid: 1f4289657a8d5439590f7db72f8fe3d1, type: 3}
     CraftRate: 10
     Type: 1
+    Price: 0
     CraftMaterials:
     - Name: Stone
       Count: 5
@@ -64,6 +71,6 @@ MonoBehaviour:
   - Type: 0
     ProductionTime: 1
   - Type: 1
-    ProductionTime: 10
+    ProductionTime: 1
   - Type: 0
     ProductionTime: 0

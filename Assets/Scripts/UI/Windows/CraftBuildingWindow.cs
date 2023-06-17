@@ -25,20 +25,20 @@ public class CraftBuildingWindow : UIBaseView
         
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(building._inProgress);
+        _startButton.Init(building.CraftActive);
         _startButton.OnStarted += OnStarted;
 
-        _resourceButtonFirst.Init(building.FirstResource, resourceSettings);
-        _resourceButtonFirst.Lock(building._inProgress);
+        _resourceButtonFirst.Init(resourceSettings, building.FirstResource);
+        _resourceButtonFirst.Lock(building.CraftActive);
         _resourceButtonFirst.OnChanged += (res) =>
         {
             building.FirstResource = res;
 
             UpdateCraftItem();
         };
-        
-        _resourceButtonSecond.Init(building.SecondResource, resourceSettings);
-        _resourceButtonSecond.Lock(building._inProgress);
+
+        _resourceButtonSecond.Init(resourceSettings, building.SecondResource);
+        _resourceButtonSecond.Lock(building.CraftActive);
         _resourceButtonSecond.OnChanged += (res) =>
         {
             building.SecondResource = res;
@@ -63,15 +63,13 @@ public class CraftBuildingWindow : UIBaseView
 
     string GetCraftItem(string res1, string res2)
     {
-        if (res1 == res2)
-        {
+        if (res1 == res2) {
             return string.Empty;
         }
 
         foreach (var resource in _resourceSettings)
         {
-            if (resource.CraftMaterials.Length == 0)
-            {
+            if (resource.CraftMaterials.Length == 0) {
                 continue;
             }
 
@@ -93,5 +91,8 @@ public class CraftBuildingWindow : UIBaseView
         }
 
         OnCraftSelected?.Invoke(start, GetCraftItem(_building.FirstResource, _building.SecondResource));
+        
+        _resourceButtonFirst.Lock(_building.CraftActive);
+        _resourceButtonSecond.Lock(_building.CraftActive);
     }
 }

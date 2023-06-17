@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -16,7 +14,7 @@ public class CraftBuilding : ResourcesBuilding
 		for (int i = 0; i < settings.CraftMaterials.Length; i++)
 		{
 			var material = settings.CraftMaterials[i];
-			if (_stock.Goods[material.Name] < material.Count)
+			if (_stock.GetItemsCount(material.Name) < material.Count)
 			{
 				anoughMaterials = false;
 			}
@@ -29,11 +27,10 @@ public class CraftBuilding : ResourcesBuilding
 		for (int i = 0; i < settings.CraftMaterials.Length; i++)
 		{
 			var material = settings.CraftMaterials[i];
-			_stock.RemoveStockItem(material.Name, material.Count);
+			_stock.RemoveItem(material.Name, material.Count);
 		}
 
-		_inProgress = true;
+		ItemInProgress = true;
 		_startProductionTime = Time.time;
 	}
-
 }
