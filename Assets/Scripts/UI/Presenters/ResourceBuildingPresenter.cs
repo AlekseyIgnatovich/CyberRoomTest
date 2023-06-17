@@ -5,9 +5,9 @@ using UnityEngine;
 public class ResourceBuildingPresenter
 {
 	private DataModel _dataModel;
-	private Building _building;
+	private ResourcesBuilding _building;
 	
-   public ResourceBuildingPresenter(ResourceSettings[] resourceSettings, DataModel dataModel, UIManager uiManager, Building building)
+   public ResourceBuildingPresenter(ResourceSettings[] resourceSettings, DataModel dataModel, UIManager uiManager, ResourcesBuilding building)
    {
 	   _dataModel = dataModel;
 	   _building = building;

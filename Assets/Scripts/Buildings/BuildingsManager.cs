@@ -7,7 +7,7 @@ public class BuildingsManager : MonoBehaviour
 {
 	[SerializeField] private Building[] _buildings;
 	
-	/*private GameSettings _gameSettings;
+	/*private GameSettings _gameSettings; //Todo;
 	private DataModel _dataModel;
 	private Stock _stock;*/
 	
@@ -23,7 +23,7 @@ public class BuildingsManager : MonoBehaviour
 			_buildings[i].Init(dataModel, gameSettings, i, stock);
 			if (_buildings[i].BuildingType == BuildingType.Resources)
 			{
-				_buildings[i].gameObject.SetActive(resCount < dataModel.ResourcesBuildingsCount);
+				_buildings[i].gameObject.SetActive(resCount <= dataModel.ResourcesBuildingsCount);
 				resCount++;
 			}
 		}

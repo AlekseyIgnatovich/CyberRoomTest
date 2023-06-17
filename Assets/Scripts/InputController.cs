@@ -9,13 +9,14 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit raycastHit;
+            RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out raycastHit, 100f))
+            bool isOverUI = UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject();
+            if (Physics.Raycast(ray, out hit, 100f) && !isOverUI)
             {
-                if (raycastHit.transform != null)
+                if (hit.transform != null)
                 {
-                    CurrentClickedGameObject(raycastHit.transform.gameObject);
+                    CurrentClickedGameObject(hit.transform.gameObject);
                 }
             }
         }

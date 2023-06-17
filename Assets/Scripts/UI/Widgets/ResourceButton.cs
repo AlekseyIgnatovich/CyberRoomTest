@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ResourceButton : MonoBehaviour
 {
+    public event Action<string> OnChanged;
+
     public string SelectedResource { get
         {
             return _resourceIndex == -1 ? string.Empty : _resourceSettings[_resourceIndex].Name;
@@ -36,6 +38,8 @@ public class ResourceButton : MonoBehaviour
         
         var res = _resourceSettings[_resourceIndex];
         _icon.sprite = res.Icon;
+        
+        OnChanged?.Invoke(res.Name);
     }
 
     public void Init(string selectedItem, ResourceSettings[] resourceSettings)

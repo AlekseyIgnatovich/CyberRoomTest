@@ -35,9 +35,16 @@ public class GameplayState : BaseGameState
 
 	private void OnSelectBuilding(Building building)
 	{
-		var presenter = new ResourceBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.DataModel, _gameManager.UiManager, building);
-
-		Debug.LogError("OnSelectBuilding");
+		if (building.BuildingType == BuildingType.Resources)//Todo: switch
+		{
+			new ResourceBuildingPresenter(_gameManager.GameSettings.ResourceSettings,
+				_gameManager.DataModel, _gameManager.UiManager, (ResourcesBuilding)building);
+		}
+		else if (building.BuildingType == BuildingType.Craft)
+		{
+			new CraftBuildingPresenter(_gameManager.GameSettings.ResourceSettings,
+				_gameManager.DataModel, _gameManager.UiManager, (CraftBuilding)building);
+		}
 	}
 
 	public override void Exit()

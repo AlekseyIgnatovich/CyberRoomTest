@@ -63,5 +63,28 @@ PrefabInstance:
       propertyPath: _buildingType
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7085887867320509621, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+      propertyPath: _buildingType
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7085887867320509621, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+--- !u!1 &6335632559743911948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1595020000777818542, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+  m_PrefabInstance: {fileID: 4741751662944590242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7594608408811363655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6335632559743911948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17d4b6939b0f419f9b97683193407f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingType: 2

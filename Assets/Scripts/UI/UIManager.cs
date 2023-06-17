@@ -51,5 +51,6 @@ public class UIManager
         _mediatorMap.Add(typeof(MainMenuWindow), guiSettings.MainMenuWindow);
         _mediatorMap.Add(typeof(GameplayScreen), guiSettings.GameplayScreen);
         _mediatorMap.Add(typeof(ResourceBuildingWindow), guiSettings.ResourceBuildingWindow);
+        _mediatorMap.Add(typeof(CraftBuildingWindow), guiSettings.CraftBuildingWindow);
     }
 }

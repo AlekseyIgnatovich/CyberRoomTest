@@ -20,6 +20,7 @@ public class GuiSettings
    public GameObject MainMenuWindow;//Todo типизировать
    public GameObject GameplayScreen;
    public GameObject ResourceBuildingWindow;
+   public GameObject CraftBuildingWindow;
 }
 
 [Serializable]

@@ -7,18 +7,18 @@ using UnityEngine.UI;
 public class ResourceBuildingWindow : UIBaseView
 {
     public event Action<bool, string> OnProductionStarted;
-    
+
     [SerializeField] private ResourceButton _resourceButton;
     [SerializeField] private StartButton _startButton;
     [SerializeField] private Button _closeButton;
 
-    public void Init( ResourceSettings[] resourceSettings, Building building)
+    public void Init(ResourceSettings[] resourceSettings, ResourcesBuilding building)
     {
         _closeButton.onClick.AddListener(Close);
-        
+
         _startButton.Init(building._inProgress);
         _startButton.OnStarted += OnStarted;
-        
+
         _resourceButton.Init(building._productionItem, resourceSettings);
         _resourceButton.Lock(building._inProgress);
     }
@@ -30,7 +30,9 @@ public class ResourceBuildingWindow : UIBaseView
             _startButton.Init(false);
             return;
         }
-        
+
         OnProductionStarted?.Invoke(start, _resourceButton.SelectedResource);
+        
+        _resourceButton.Lock(start);
     }
 }

@@ -25,7 +25,7 @@ public class Stock
         OnGoodChamnged?.Invoke(good, Goods[good]);
     }
     
-    public void RemovetockItem(string good, int count)
+    public void RemoveStockItem(string good, int count)
     {
         Goods[good] -= count;
         OnGoodChamnged?.Invoke(good, Goods[good]);
