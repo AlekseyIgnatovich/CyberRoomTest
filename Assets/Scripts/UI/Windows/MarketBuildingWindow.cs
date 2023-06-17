@@ -41,6 +41,6 @@ public class MarketBuildingWindow : UIBaseView
             return;
         }
 
-        _price.text = _resourceSettings.First(r => r.Name == _resourceButton.SelectedResource).Price.ToString();
+        _price.text = _resourceSettings.First(r => r.Id == _resourceButton.SelectedResource).Price.ToString();
     }
 }

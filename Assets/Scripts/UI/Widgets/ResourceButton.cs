@@ -9,7 +9,7 @@ public class ResourceButton : MonoBehaviour
 
     public string SelectedResource
     {
-        get { return _resourceIndex == -1 ? string.Empty : _resourceSettings[_resourceIndex].Name; }
+        get { return _resourceIndex == -1 ? string.Empty : _resourceSettings[_resourceIndex].Id; }
     }
 
     [SerializeField] private Image _icon;
@@ -38,7 +38,7 @@ public class ResourceButton : MonoBehaviour
         var res = _resourceSettings[_resourceIndex];
         _icon.sprite = res.Icon;
 
-        OnChanged?.Invoke(res.Name);
+        OnChanged?.Invoke(res.Id);
     }
 
     public void Init(ResourceSettings[] resourceSettings, string selectedItem)
@@ -47,7 +47,7 @@ public class ResourceButton : MonoBehaviour
 
         if (!string.IsNullOrEmpty(selectedItem))
         {
-            _resourceIndex = Array.FindIndex(_resourceSettings, (r) => r.Name == selectedItem);
+            _resourceIndex = Array.FindIndex(_resourceSettings, (r) => r.Id == selectedItem);
             var res = _resourceSettings[_resourceIndex];
             _icon.sprite = res.Icon;
         }

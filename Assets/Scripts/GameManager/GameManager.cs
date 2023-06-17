@@ -3,7 +3,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	public GameSettings GameSettings;
-	public DataModel DataModel;
+	public Data Data;
 	public UIManager UiManager;
 	
 	private BaseGameState _gameState;
@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 	{
 		DontDestroyOnLoad(gameObject);
 		
-		DataModel = new DataModel();
+		Data = new Data(GameSettings);
 		UiManager = new UIManager(GameSettings.GuiSettings);
 		
 		SwitchState(GameState.Menu);
@@ -40,4 +40,10 @@ public class GameManager : MonoBehaviour
 		
 		_gameState.Enter();
 	}
+	
+	private void OnApplicationQuit()
+	{
+		Data.SaveAll();
+	}
+	
 }

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public abstract class BaseGameState
 {
-    protected GameManager _gameManager;
-    
-    public BaseGameState(GameManager gameManager)
-    {
-	    _gameManager = gameManager;
-    }
-    
-    public virtual void Enter() { }
+	protected GameManager _gameManager;
 
-    public virtual void Exit(){ }
-    
+	public BaseGameState(GameManager gameManager)
+	{
+		_gameManager = gameManager;
+	}
+
+	public virtual void Enter() { }
+
+	public virtual void Exit() { }
 }

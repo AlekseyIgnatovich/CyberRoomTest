@@ -8,23 +8,23 @@ public class GameplayScreen : UIBaseView
     [SerializeField] private TextMeshProUGUI _moneys;
     [SerializeField] private StockWidget _stockWidget;
     
-    private DataModel _dataModel;
+    private Data _data;
     
     public override void Show()
     {
         base.Show();
-        ShowMoneys(0);
+        ShowMoney(0);
     }
 
-    public void Init(DataModel dataModel, GameSettings settings, Stock stock)
+    public void Init(Data data, GameSettings settings)
     {
-        _dataModel = dataModel;
-        _dataModel.Moneys.OnChanged += ShowMoneys;
+        _data = data;
+        _data.OnMoneyChanged += ShowMoney;
         
-        _stockWidget.Init(settings, stock);
+        _stockWidget.Init(settings, _data);
     }
 
-    private void ShowMoneys(int moneys)
+    private void ShowMoney(int moneys)
     {
         _moneys.text = string.Format("$: {0}", moneys);
     }
@@ -32,6 +32,6 @@ public class GameplayScreen : UIBaseView
     public override void Close()
     {
         base.Close();
-        _dataModel.Moneys.OnChanged -= ShowMoneys;
+        _data.OnMoneyChanged-= ShowMoney;
     }
 }

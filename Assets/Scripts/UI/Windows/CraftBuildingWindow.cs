@@ -53,7 +53,7 @@ public class CraftBuildingWindow : UIBaseView
         var craftItem = GetCraftItem(_building.FirstResource, _building.SecondResource);
         if (!string.IsNullOrEmpty(craftItem))
         {
-            _craftItemIcon.sprite = _resourceSettings.First(r => r.Name == craftItem).Icon;
+            _craftItemIcon.sprite = _resourceSettings.First(r => r.Id == craftItem).Icon;
         }
         else
         {
@@ -76,7 +76,7 @@ public class CraftBuildingWindow : UIBaseView
             if ((resource.CraftMaterials[0].Name == res1 || resource.CraftMaterials[0].Name == res2) &&
                 (resource.CraftMaterials[1].Name == res1 || resource.CraftMaterials[1].Name == res2))
             {
-                return resource.Name;
+                return resource.Id;
             }
         }
         return string.Empty;

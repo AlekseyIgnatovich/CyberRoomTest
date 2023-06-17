@@ -27,7 +27,7 @@ public class GuiSettings
 [Serializable]
 public class ResourceSettings
 {
-   public string Name;
+   public string Id;
    public Sprite Icon;
    public int CraftRate;
    public ResourceType Type;

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CraftBuildingPresenter //Todo:копипаста
 {
-    private DataModel _dataModel;
+    private Data _data;
     private CraftBuilding _building;
 	
-    public CraftBuildingPresenter(ResourceSettings[] resourceSettings, DataModel dataModel, UIManager uiManager, CraftBuilding building)
+    public CraftBuildingPresenter(ResourceSettings[] resourceSettings, Data data, UIManager uiManager, CraftBuilding building)
     {
-        _dataModel = dataModel;
+        _data = data;
         _building = building;
 	   
         var window = uiManager.ShowView<CraftBuildingWindow>();

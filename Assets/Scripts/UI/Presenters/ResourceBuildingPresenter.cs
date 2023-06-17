@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ResourceBuildingPresenter
 {
-	private DataModel _dataModel;
+	private Data _data;
 	private ResourcesBuilding _building;
 	
-   public ResourceBuildingPresenter(ResourceSettings[] resourceSettings, DataModel dataModel, UIManager uiManager, ResourcesBuilding building)
+   public ResourceBuildingPresenter(ResourceSettings[] resourceSettings, Data data, UIManager uiManager, ResourcesBuilding building)
    {
-	   _dataModel = dataModel;
+	   _data = data;
 	   _building = building;
 	   
 	   var window = uiManager.ShowView<ResourceBuildingWindow>();

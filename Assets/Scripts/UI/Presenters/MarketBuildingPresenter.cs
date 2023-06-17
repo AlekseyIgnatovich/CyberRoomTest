@@ -3,16 +3,14 @@ using UnityEngine;
 
 public class MarketBuildingPresenter //Todo:копипаста
 {
-    private DataModel _dataModel;
-    private Stock _stock;
+    private Data _data;
     private ResourceSettings[] _resourceSettings;
 	
-    public MarketBuildingPresenter(ResourceSettings[] resourceSettings, DataModel dataModel, UIManager uiManager, Stock stock)
+    public MarketBuildingPresenter(ResourceSettings[] resourceSettings, Data data, UIManager uiManager)
     {
         _resourceSettings = resourceSettings;
-        _dataModel = dataModel;
-        _stock = stock;
-        
+        _data = data;
+
         var window = uiManager.ShowView<MarketBuildingWindow>();
         window.Init(resourceSettings);
         window.OnSellClicked += OnSellClicked;
@@ -20,12 +18,12 @@ public class MarketBuildingPresenter //Todo:копипаста
 
     private void OnSellClicked(string item)
     {
-        if (_stock.GetItemsCount(item) <= 0) {
+        if (_data.GetGoodsCount(item) <= 0) {
             return;
         }
 
-        _stock.RemoveItem(item, 1);
-        var settings = _resourceSettings.First(r => r.Name == item);
-        _dataModel.Moneys.Value += settings.Price;
+        _data.RemoveGood(item, 1);
+        var settings = _resourceSettings.First(r => r.Id == item);
+        _data.AddMoney(settings.Price);
     }
 }

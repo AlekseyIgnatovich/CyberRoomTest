@@ -51,8 +51,8 @@ public class ResourcesBuilding : Building
     
     private void FinishProduction()
     {
-        var settings = _gameSettings.ResourceSettings.First(r => r.Name == _productionItem);
-        _stock.AddItem(settings.Name, 1);
+        var settings = _gameSettings.ResourceSettings.First(r => r.Id == _productionItem);
+        _data.AddGoodItem(settings.Id, 1);
         ItemInProgress = false;
     }
 }

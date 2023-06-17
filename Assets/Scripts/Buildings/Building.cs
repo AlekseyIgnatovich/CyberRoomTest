@@ -8,16 +8,14 @@ public class Building : MonoBehaviour
 
     [SerializeField] protected BuildingType _buildingType;
 
-    protected DataModel _dataModel;
-    protected Stock _stock;
+    protected Data _data;
     protected GameSettings _gameSettings;
     
-    public void Init(DataModel dataModel, GameSettings gameSettings, int id, Stock stock)
+    public void Init(Data data, GameSettings gameSettings, int id)
     {
-        _dataModel = dataModel;
+        this._data = data;
         _gameSettings = gameSettings;
         Id = id;
-        _stock = stock;
     }
 
     class DisabledState :ProductionState

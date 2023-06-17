@@ -11,7 +11,7 @@ public class MainMenuState : BaseGameState
 		_menuWindow = _gameManager.UiManager.ShowView<MainMenuWindow>();
 		_menuWindow.OnStartClicked += (value) =>
 		{
-			_gameManager.DataModel.ResourcesBuildingsCount = value;
+			_gameManager.Data.ResourcesBuildingsCount = value;
 			_gameManager.SwitchState(GameState.Gammeplay);
 		};
 	}
