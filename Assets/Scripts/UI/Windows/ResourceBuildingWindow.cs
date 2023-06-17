@@ -12,8 +12,6 @@ public class ResourceBuildingWindow : UIBaseView
     [SerializeField] private StartButton _startButton;
     [SerializeField] private Button _closeButton;
 
-    private BuildingModel _buildingModel;
-    
     public void Init( ResourceSettings[] resourceSettings, Building building)
     {
         _closeButton.onClick.AddListener(Close);
@@ -34,9 +32,5 @@ public class ResourceBuildingWindow : UIBaseView
         }
         
         OnProductionStarted?.Invoke(start, _resourceButton.SelectedResource);
-        
-        
-        Debug.LogError("Start: " + _resourceButton.SelectedResource);
-        
     }
 }
