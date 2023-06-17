@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7594583087701621982}
   - component: {fileID: 8401792675628575642}
   - component: {fileID: 4755334077019328968}
+  - component: {fileID: 6603414130440142593}
   m_Layer: 0
   m_Name: BaseBuilding
   m_TagString: Building
@@ -97,3 +98,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6603414130440142593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7514684768223623129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17d4b6939b0f419f9b97683193407f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buildingType: 0

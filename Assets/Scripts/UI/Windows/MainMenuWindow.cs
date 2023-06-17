@@ -9,7 +9,7 @@ public class MainMenuWindow : UIBaseView
     [SerializeField] Toggle[] _buildingsTgls;
     [SerializeField] Button _startBtn;
 
-    private int _buildingsCount;
+    private int _buildingsCount = 1;
     
     public override void Show()
     {

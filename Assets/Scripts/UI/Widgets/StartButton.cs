@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class StartButton : MonoBehaviour
 {
+    public event Action<bool> OnStarted;
+    
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private bool _changeState = true;
 
@@ -22,12 +25,12 @@ public class StartButton : MonoBehaviour
         }
 
         SetupState(_state);
+        OnStarted?.Invoke(_state);
     }
 
     private void SetupState(bool state)
     {
         _state = state;
-
         _text.text = _state ? "Stop" : "Start";
     }
 

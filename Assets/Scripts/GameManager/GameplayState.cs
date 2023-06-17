@@ -5,6 +5,8 @@ public class GameplayState : BaseGameState
 {
 	private GameplayScreen _gameplayScreen;
 	private InputController _inputController;
+	private BuildingsManager _buildingsManager;
+	private Stock _stock;
 	
 	public GameplayState(GameManager gameManager) : base(gameManager)
 	{
@@ -19,16 +21,22 @@ public class GameplayState : BaseGameState
 
 	private void OnSceneLoaded(AsyncOperation obj)  //Todo: не очень
 	{
+		_stock = new Stock(_gameManager.GameSettings);
+		
 		_gameplayScreen = _gameManager.UiManager.ShowView<GameplayScreen>();
 		_gameplayScreen.Init(_gameManager.DataModel);
 
-		var inputControllerObject = new GameObject("InputController");
-		_inputController = inputControllerObject.AddComponent<InputController>();
+		_inputController = GameObject.FindObjectOfType<InputController>();
 		_inputController.OnClickedBuilding += OnSelectBuilding;
+		
+		_buildingsManager = GameObject.FindObjectOfType<BuildingsManager >();
+		_buildingsManager.Init(_gameManager.GameSettings, _gameManager.DataModel, _stock);
 	}
 
 	private void OnSelectBuilding(Building building)
 	{
+		var presenter = new ResourceBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.DataModel, _gameManager.UiManager, building);
+
 		Debug.LogError("OnSelectBuilding");
 	}
 

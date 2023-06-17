@@ -5,6 +5,6 @@ using UnityEngine;
 public enum BuildingType 
 {
     Resources,
-    Processing,
+    Craft,
     Market
 }

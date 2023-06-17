@@ -9,6 +9,7 @@ public class GameSettings : ScriptableObject
 {
    public GuiSettings GuiSettings;
    public ResourceSettings[] ResourceSettings;
+   public BuildingSettings[] BuildingSettings;
 }
 
 [Serializable]
@@ -42,6 +43,13 @@ public enum ResourceType
 public class CraftMaterial
 {
    public string Name;
-   public string Count;
+   public int Count;
+}
+
+[Serializable]
+public class BuildingSettings
+{
+   public BuildingType Type;
+   public float ProductionTime;
 }
    

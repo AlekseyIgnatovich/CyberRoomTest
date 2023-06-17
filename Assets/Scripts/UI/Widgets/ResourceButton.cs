@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class ResourceButton : MonoBehaviour
 {
-    public string SelectedResource
-    {
-        get { return _resourceSettings[_resourceIndex].Name; }
+    public string SelectedResource { get
+        {
+            return _resourceIndex == -1 ? string.Empty : _resourceSettings[_resourceIndex].Name;
+        }
     }
 
     [SerializeField] private Image _icon;
@@ -15,7 +16,7 @@ public class ResourceButton : MonoBehaviour
     [SerializeField] private ResourceType _resourceType;
 
     private ResourceSettings[] _resourceSettings;
-    private int _resourceIndex;
+    private int _resourceIndex = -1;
     private bool _locked;
     
     void Awake()
@@ -36,7 +37,6 @@ public class ResourceButton : MonoBehaviour
         var res = _resourceSettings[_resourceIndex];
         _icon.sprite = res.Icon;
     }
-
 
     public void Init(string selectedItem, ResourceSettings[] resourceSettings)
     {

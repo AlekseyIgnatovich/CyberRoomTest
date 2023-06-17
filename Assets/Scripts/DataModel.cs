@@ -8,17 +8,13 @@ public class DataModel
 
     public NotifableProperty<int> Moneys = new();
 
-    public List<BuildingModel> Buildings;
+    //public List<BuildingModel> Buildings;
 }
 
-public class BuildingModel
+/*public class BuildingModel
 {
     public int Id;
     public int SettingsName;
-}
-
-public class ProducingBuildingModel : BuildingModel
-{
+    public bool Production;
     public string CraftItem;
-    public bool Active;
-}
+}*/
