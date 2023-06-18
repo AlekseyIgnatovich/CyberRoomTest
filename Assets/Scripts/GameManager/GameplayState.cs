@@ -63,6 +63,7 @@ public class GameplayState : BaseGameState
 				break;
 			default:
 				Debug.LogError($"Unsupported building type: {building.BuildingType}");
+				break;
 		}
 	}
 }
