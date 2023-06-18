@@ -10,7 +10,7 @@ public class MarketBuildingWindow : UIBaseView
 
     [SerializeField] private ResourceButton _resourceButton;
     [SerializeField] private Button _sellButton;
-    [SerializeField] private Button _closeButton; //Todo: to base class 
+    [SerializeField] private Button _closeButton;
     [SerializeField] private TextMeshProUGUI _price;
 
     private ResourceSettings[] _resourceSettings;

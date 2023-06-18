@@ -1,10 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameplayState : BaseGameState
 {
-	private GameplayScreen _gameplayScreen; //Todo: to presenter 
 	private InputController _inputController;
 	private BuildingsManager _buildingsManager;
 
@@ -19,12 +17,10 @@ public class GameplayState : BaseGameState
 		SceneManager.LoadSceneAsync(Constants.GameplaySceneName).completed += OnSceneLoaded;
 	}
 
-	private void OnSceneLoaded(AsyncOperation obj) //Todo: не очень
+	private void OnSceneLoaded(AsyncOperation obj)
 	{
 		var gameplayScreenController = new GameplayScreenController(_gameManager);
-		_gameplayScreen = _gameManager.UiManager.ShowView<GameplayScreen>();
-		_gameplayScreen.Init(_gameManager.Data, _gameManager.GameSettings);
-
+		
 		_inputController = GameObject.FindObjectOfType<InputController>();
 		_inputController.OnClickedBuilding += OnBuildingSelected;
 

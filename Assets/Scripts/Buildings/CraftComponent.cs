@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CraftComponent : ResourceComponent
 {
-    public string FirstResource { get; set; } //Todo
+    public string FirstResource { get; set; }
     public string SecondResource { get; set; }
 
     public override void StopCreatingItems()

@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 		SwitchState(GameState.Menu);
 	}
 
-	public void SwitchState(GameState state) //Todo: убрать свитч
+	public void SwitchState(GameState state)
 	{
 		if (_gameState != null)
 		{

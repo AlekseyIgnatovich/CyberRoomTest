@@ -18,7 +18,7 @@ public class ResourceComponent : BaseBuildingComponent
         get { return _buildingState == BuildingState.Production || _buildingState == BuildingState.ItemInProgress; }
     }
 
-    public string ProductionItem { get; private set; } // Todo
+    public string ProductionItem { get; private set; }
 
     protected float _startProductionTime;
 
