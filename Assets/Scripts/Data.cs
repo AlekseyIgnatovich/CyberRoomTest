@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Data
@@ -30,7 +31,7 @@ public class Data
 
     public void AddMoney(int moneys)
     {
-        Money = moneys;
+        Money += moneys;
         OnMoneyChanged?.Invoke(Money);
     }
     
@@ -70,6 +71,13 @@ public class Data
 
     public void Clear()
     {
+        Money = 0;
+
+        var keys = _goods.Keys.ToArray();
+        foreach (var item in keys)
+        {
+            _goods[item] = 0;
+        }
         PlayerPrefs.DeleteAll();
     }
 }

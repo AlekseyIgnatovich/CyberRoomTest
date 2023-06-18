@@ -7,9 +7,16 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Settings", order = 1)]
 public class GameSettings : ScriptableObject
 {
+   public WinConditions WinConditions;
    public GuiSettings GuiSettings;
    public ResourceSettings[] ResourceSettings;
    public BuildingSettings[] BuildingSettings;
+}
+
+[Serializable]
+public class WinConditions
+{
+   public int Money;
 }
 
 [Serializable]
@@ -22,6 +29,7 @@ public class GuiSettings
    public GameObject ResourceBuildingWindow;
    public GameObject CraftBuildingWindow;
    public GameObject MarketBuildingWindow;
+   public GameObject WinWindow;
 }
 
 [Serializable]

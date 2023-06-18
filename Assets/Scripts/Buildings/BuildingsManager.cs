@@ -12,7 +12,7 @@ public class BuildingsManager : MonoBehaviour
 			_buildings[i].Init(data, gameSettings, i);
 			if (_buildings[i].BuildingType == BuildingType.Resources)
 			{
-				_buildings[i].gameObject.SetActive(resCount <= data.ResourcesBuildingsCount);
+				_buildings[i].gameObject.SetActive(resCount < data.ResourcesBuildingsCount);
 				resCount++;
 			}
 		}

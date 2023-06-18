@@ -13,5 +13,8 @@ public abstract class BaseGameState
 
 	public virtual void Enter() { }
 
-	public virtual void Exit() { }
+	public virtual void Exit()
+	{
+		_gameManager.UiManager.CloseAll();
+	}
 }

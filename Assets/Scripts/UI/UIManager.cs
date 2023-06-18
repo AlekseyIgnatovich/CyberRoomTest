@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIManager
 {
-    //private Dictionary<Type, UIBaseView> _activeViews;
     private Dictionary<Type, GameObject> _mediatorMap;
     private GameObject _uiRoot;
 
@@ -13,16 +12,6 @@ public class UIManager
         SetupRootObject(guiSettings.UIRootPrefab);
         SetupGUIMap(guiSettings);
     }
-
-    /*//ToDo
-    public void HideCurrentScreen()
-    {
-        if (_activeViews != null)
-        {
-            _activeViews.Hide();
-            GameObject.Destroy(_activeViews.gameObject);
-        }
-    }*/
 
     public T ShowView <T>() where T : UIBaseView
     {
@@ -35,8 +24,16 @@ public class UIManager
         viewTransform.anchoredPosition = Vector2.zero;
         view.Show();
         
-        //_activeViews.Add(typeof(T), view);
-        return view as T;
+        return view;
+    }
+
+    public void CloseAll()
+    {
+        var views = _uiRoot.GetComponentsInChildren<UIBaseView>();
+        foreach (var item in views)
+        {
+            item.Close();
+        }
     }
 
     private void SetupRootObject(GameObject prefab)
@@ -53,5 +50,6 @@ public class UIManager
         _mediatorMap.Add(typeof(ResourceBuildingWindow), guiSettings.ResourceBuildingWindow);
         _mediatorMap.Add(typeof(CraftBuildingWindow), guiSettings.CraftBuildingWindow);
         _mediatorMap.Add(typeof(MarketBuildingWindow), guiSettings.MarketBuildingWindow);
+        _mediatorMap.Add(typeof(WinWindow), guiSettings.WinWindow);
     }
 }
