@@ -22,7 +22,7 @@ public class CraftBuildingWindow : UIBaseView
 
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(inProduction);
+        _startButton.Setup(inProduction);
         _startButton.OnStarted += OnStarted;
 
         _resourceButtonFirst.Init(resourceSettings, firstRes);
@@ -84,11 +84,17 @@ public class CraftBuildingWindow : UIBaseView
     {
         if (string.IsNullOrEmpty(_resourceButtonFirst.SelectedResource))
         {
-            _startButton.Init(false);
+            _startButton.Setup(false);
             return;
         }
 
-        OnCraftSelected?.Invoke(start, GetCraftItem(_resourceButtonFirst.SelectedResource, _resourceButtonSecond.SelectedResource));
+        var craftItem = GetCraftItem(_resourceButtonFirst.SelectedResource, _resourceButtonSecond.SelectedResource);
+        if (string.IsNullOrEmpty(craftItem)) {
+            _startButton.Setup(false);
+            return;
+        }
+        
+        OnCraftSelected?.Invoke(start, craftItem);
         
         _resourceButtonFirst.Lock(_startButton.State);
         _resourceButtonSecond.Lock(_startButton.State);

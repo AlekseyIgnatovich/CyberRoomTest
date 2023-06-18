@@ -22,17 +22,17 @@ public class CraftComponent : ResourceComponent
     {
         var settings = _gameSettings.ResourceSettings.First(r => r.Id == ProductionItem);
 
-        bool anoughMaterials = true;
+        bool enoughMaterials = true;
         for (int i = 0; i < settings.CraftMaterials.Length; i++)
         {
             var material = settings.CraftMaterials[i];
             if (_data.GetGoodsCount(material.Name) < material.Count)
             {
-                anoughMaterials = false;
+                enoughMaterials = false;
             }
         }
         
-        if (!anoughMaterials) {
+        if (!enoughMaterials) {
             return;
         }
         

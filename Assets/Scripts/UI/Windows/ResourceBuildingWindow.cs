@@ -14,7 +14,7 @@ public class ResourceBuildingWindow : UIBaseView
     {
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(inProduction);
+        _startButton.Setup(inProduction);
         _startButton.OnStarted += OnStarted;
 
         _resourceButton.Init(resourceSettings, productionItem);
@@ -25,7 +25,7 @@ public class ResourceBuildingWindow : UIBaseView
     {
         if (string.IsNullOrEmpty(_resourceButton.SelectedResource))
         {
-            _startButton.Init(false);
+            _startButton.Setup(false);
             return;
         }
 

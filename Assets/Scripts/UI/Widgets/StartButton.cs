@@ -36,7 +36,7 @@ public class StartButton : MonoBehaviour
         _text.text = _state ? "Stop" : "Start";
     }
 
-    public void Init(bool state)
+    public void Setup(bool state)
     {
         SetupState(state);
     }

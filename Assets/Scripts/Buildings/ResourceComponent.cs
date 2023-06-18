@@ -22,7 +22,6 @@ public class ResourceComponent : BaseBuildingComponent
 
     [SerializeField] private float _productionTime;
 
-    
     public void CreateItems(string item)
     {
         _buildingState = BuildingState.Production;

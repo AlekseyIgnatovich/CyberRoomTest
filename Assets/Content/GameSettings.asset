@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   WinConditions:
-    Money: 10
+    Money: 20
   GuiSettings:
     UIRootPrefab: {fileID: 5782626895928360952, guid: 35e931d99a19a4343995d8fbe77ad283, type: 3}
     Windows:
