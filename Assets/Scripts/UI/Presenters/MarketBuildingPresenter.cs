@@ -1,7 +1,6 @@
 using System.Linq;
-using UnityEngine;
 
-public class MarketBuildingPresenter //Todo:копипаста
+public class MarketBuildingPresenter
 {
     private Data _data;
     private ResourceSettings[] _resourceSettings;

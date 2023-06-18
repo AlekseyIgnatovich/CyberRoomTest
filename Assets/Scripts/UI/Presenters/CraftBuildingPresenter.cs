@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class CraftBuildingPresenter //Todo:копипаста
+public class CraftBuildingPresenter
 {
-    private Data _data;
     private CraftBuilding _building;
 	
-    public CraftBuildingPresenter(ResourceSettings[] resourceSettings, Data data, UIManager uiManager, CraftBuilding building)
+    public CraftBuildingPresenter(ResourceSettings[] resourceSettings, UIManager uiManager, CraftBuilding building)
     {
-        _data = data;
         _building = building;
 	   
         var window = uiManager.ShowView<CraftBuildingWindow>();
-        window.Init(resourceSettings, building);
+        window.Init(resourceSettings, building.FirstResource, building.SecondResource, building.InProduction);
         window.OnCraftSelected += OnCraftSelected;
+        window.OnItemsChanged += OnItemsChanged;
+    }
+
+    private void OnItemsChanged(string res1, string res2)
+    {
+        _building.FirstResource = res1;
+        _building.SecondResource = res2;
     }
 
     private void OnCraftSelected(bool start, string craftItem)

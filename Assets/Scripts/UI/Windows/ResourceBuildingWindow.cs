@@ -10,15 +10,15 @@ public class ResourceBuildingWindow : UIBaseView
     [SerializeField] private StartButton _startButton;
     [SerializeField] private Button _closeButton;
 
-    public void Init(ResourceSettings[] resourceSettings, ResourcesBuilding building)
+    public void Init(ResourceSettings[] resourceSettings, string productionItem, bool inProduction)
     {
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(building.InProduction);
+        _startButton.Init(inProduction);
         _startButton.OnStarted += OnStarted;
 
-        _resourceButton.Init(resourceSettings, building.ProductionItem);
-        _resourceButton.Lock(building.InProduction);
+        _resourceButton.Init(resourceSettings, productionItem);
+        _resourceButton.Lock(inProduction);
     }
 
     private void OnStarted(bool start)

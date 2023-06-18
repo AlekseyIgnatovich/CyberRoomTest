@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CraftBuildingWindow : UIBaseView
 {
     public event Action<bool, string> OnCraftSelected;
+    public event Action<string, string> OnItemsChanged;
     
     [SerializeField] private ResourceButton _resourceButtonFirst;
     [SerializeField] private ResourceButton _resourceButtonSecond;
@@ -14,32 +15,31 @@ public class CraftBuildingWindow : UIBaseView
     [SerializeField] private Button _closeButton;
 
     private ResourceSettings[] _resourceSettings;
-    private CraftBuilding _building;
 
-    public void Init(ResourceSettings[] resourceSettings, CraftBuilding building)
+    public void Init(ResourceSettings[] resourceSettings, string firstRes, string secondRes, bool inProduction)
     {
         _resourceSettings = resourceSettings;
-        _building = building;
-        
+
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(building.InProduction);
+        _startButton.Init(inProduction);
         _startButton.OnStarted += OnStarted;
 
-        _resourceButtonFirst.Init(resourceSettings, building.FirstResource);
-        _resourceButtonFirst.Lock(building.InProduction);
+        _resourceButtonFirst.Init(resourceSettings, firstRes);
+        _resourceButtonFirst.Lock(inProduction);
         _resourceButtonFirst.OnChanged += (res) =>
         {
-            building.FirstResource = res;
+            OnItemsChanged?.Invoke(_resourceButtonFirst.SelectedResource, _resourceButtonSecond.SelectedResource);
 
             UpdateCraftItem();
         };
 
-        _resourceButtonSecond.Init(resourceSettings, building.SecondResource);
-        _resourceButtonSecond.Lock(building.InProduction);
+        _resourceButtonSecond.Init(resourceSettings, secondRes);
+        _resourceButtonSecond.Lock(inProduction);
         _resourceButtonSecond.OnChanged += (res) =>
         {
-            building.SecondResource = res;
+            OnItemsChanged?.Invoke(_resourceButtonFirst.SelectedResource, _resourceButtonSecond.SelectedResource);
+
             UpdateCraftItem();
         };
         
@@ -48,7 +48,7 @@ public class CraftBuildingWindow : UIBaseView
 
     void UpdateCraftItem()
     {
-        var craftItem = GetCraftItem(_building.FirstResource, _building.SecondResource);
+        var craftItem = GetCraftItem(_resourceButtonFirst.SelectedResource, _resourceButtonSecond.SelectedResource);
         if (!string.IsNullOrEmpty(craftItem))
         {
             _craftItemIcon.sprite = _resourceSettings.First(r => r.Id == craftItem).Icon;
@@ -88,9 +88,9 @@ public class CraftBuildingWindow : UIBaseView
             return;
         }
 
-        OnCraftSelected?.Invoke(start, GetCraftItem(_building.FirstResource, _building.SecondResource));
+        OnCraftSelected?.Invoke(start, GetCraftItem(_resourceButtonFirst.SelectedResource, _resourceButtonSecond.SelectedResource));
         
-        _resourceButtonFirst.Lock(_building.InProduction);
-        _resourceButtonSecond.Lock(_building.InProduction);
+        _resourceButtonFirst.Lock(_startButton.State);
+        _resourceButtonSecond.Lock(_startButton.State);
     }
 }

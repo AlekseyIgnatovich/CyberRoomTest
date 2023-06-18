@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,20 +50,19 @@ public class GameplayState : BaseGameState
 
 	private void OnBuildingSelected(Building building)
 	{
-		if (building.BuildingType == BuildingType.Resources) //Todo: switch
+		switch (building.BuildingType)
 		{
-			new ResourceBuildingPresenter(_gameManager.GameSettings.ResourceSettings,
-				_gameManager.Data, _gameManager.UiManager, (ResourcesBuilding)building);
-		}
-		else if (building.BuildingType == BuildingType.Craft)
-		{
-			new CraftBuildingPresenter(_gameManager.GameSettings.ResourceSettings,
-				_gameManager.Data, _gameManager.UiManager, (CraftBuilding)building);
-		}
-		else if (building.BuildingType == BuildingType.Market)
-		{
-			new MarketBuildingPresenter(_gameManager.GameSettings.ResourceSettings,
-				_gameManager.Data, _gameManager.UiManager);
+			case BuildingType.Resources:
+				new ResourceBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (ResourcesBuilding)building);
+				break;
+			case BuildingType.Craft:
+				new CraftBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (CraftBuilding)building);
+				break;
+			case BuildingType.Market:
+				new MarketBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.Data, _gameManager.UiManager);
+				break;
+			default:
+				Debug.LogError($"Unsupported building type: {building.BuildingType}");
 		}
 	}
 }

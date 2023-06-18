@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class StartButton : MonoBehaviour
 {
     public event Action<bool> OnStarted;
+
+    public bool State => _state;
     
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private bool _changeState = true;
