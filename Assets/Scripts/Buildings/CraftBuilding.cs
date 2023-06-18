@@ -3,12 +3,24 @@ using UnityEngine;
 
 public class CraftBuilding : ResourcesBuilding
 {
-	public string FirstResource { get; set; }
+	public string FirstResource { get; set; } //Todo
 	public string SecondResource { get; set; }
-	
+
+	public override void StopCreatingItems()
+	{
+		_buildingState = BuildingState.Idle;
+
+		var settings = _gameSettings.ResourceSettings.First(r => r.Id == ProductionItem);
+		for (int i = 0; i < settings.CraftMaterials.Length; i++)
+		{
+			var material = settings.CraftMaterials[i];
+			_data.AddGoodItem(material.Name, material.Count);
+		}
+	}
+
 	protected override void StartProduction()
 	{
-		var settings = _gameSettings.ResourceSettings.First(r => r.Id == _productionItem);
+		var settings = _gameSettings.ResourceSettings.First(r => r.Id == ProductionItem);
 
 		bool anoughMaterials = true;
 		for (int i = 0; i < settings.CraftMaterials.Length; i++)
@@ -30,7 +42,7 @@ public class CraftBuilding : ResourcesBuilding
 			_data.RemoveGood(material.Name, material.Count);
 		}
 
-		ItemInProgress = true;
+		_buildingState = BuildingState.ItemInProgress;
 		_startProductionTime = Time.time;
 	}
 }

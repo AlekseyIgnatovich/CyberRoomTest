@@ -25,7 +25,7 @@ public class CraftBuildingPresenter //Todo:копипаста
         }
         else
         {
-            _building.StopItemsCreating();
+            _building.StopCreatingItems();
         }
     }
 }

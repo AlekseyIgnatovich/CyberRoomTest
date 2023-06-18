@@ -1,42 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class ResourcesBuilding : Building
 {
-    public bool CraftActive;// Todo
-    public  bool ItemInProgress;// Todo
-    public string _productionItem { get; set; }// Todo
-    protected private float _startProductionTime { get; set; }
-
-    public void StartProduction(string item)
+    public bool InProduction
     {
-        CraftActive = true;
-        _productionItem = item;
+        get { return _buildingState == BuildingState.Production || _buildingState == BuildingState.ItemInProgress; }
     }
 
-    public void StopProduction()
+    public string ProductionItem { get; private set; } // Todo
+
+    protected float _startProductionTime;
+
+    [SerializeField] private float _productionTime;
+
+    public void CreateItems(string item)
     {
-        CraftActive = false;
-        ItemInProgress = false;
+        _buildingState = BuildingState.Production;
+        ProductionItem = item;
+    }
+
+    public virtual void StopCreatingItems()
+    {
+        _buildingState = BuildingState.Idle;
     }
 
     private void Update()
     {
-        if (!CraftActive)
+        if (_buildingState == BuildingState.Idle)
         {
             return;
         }
 
-        if (!ItemInProgress)
+        if (_buildingState == BuildingState.Production)
         {
             StartProduction();
         }
         else
         {
-            var settings = _gameSettings.BuildingSettings.First(b => b.Type == _buildingType);
-            if (Time.time - _startProductionTime >= settings.ProductionTime)
+            if (Time.time - _startProductionTime >= _productionTime)
             {
                 FinishProduction();
             }
@@ -45,14 +47,14 @@ public class ResourcesBuilding : Building
 
     protected virtual void StartProduction()
     {
-        ItemInProgress = true;
+        _buildingState = BuildingState.ItemInProgress;
         _startProductionTime = Time.time;
     }
-    
-    private void FinishProduction()
+
+    protected virtual void FinishProduction()
     {
-        var settings = _gameSettings.ResourceSettings.First(r => r.Id == _productionItem);
+        var settings = _gameSettings.ResourceSettings.First(r => r.Id == ProductionItem);
         _data.AddGoodItem(settings.Id, 1);
-        ItemInProgress = false;
+        _buildingState = BuildingState.Production;
     }
 }

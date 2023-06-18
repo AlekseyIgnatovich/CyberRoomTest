@@ -25,7 +25,7 @@ public class ResourceBuildingPresenter
 	   }
 	   else
 	   {
-		   _building.StopItemsCreating();
+		   _building.StopCreatingItems();
 	   }
    }
 }
