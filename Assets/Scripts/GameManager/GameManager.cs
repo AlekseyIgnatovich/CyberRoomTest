@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 				_gameState = new GameplayState(this);
 				break;
 			default:
-				Debug.LogError("Unexpected state");
+				Debug.LogError($"Unexpected state {state}");
 				break;
 		}
 		
@@ -45,5 +45,4 @@ public class GameManager : MonoBehaviour
 	{
 		Data.SaveAll();
 	}
-	
 }
