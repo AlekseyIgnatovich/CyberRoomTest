@@ -71,7 +71,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7514684768223623129, guid: 25be0b98ecc39469ba3b257a09404abf, type: 3}
   m_PrefabInstance: {fileID: 3640350591611757362}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4686042040319687806
+--- !u!114 &5501119151638255478
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,8 +80,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 6542774130933437675}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed65c58da08a94340a5bdb58983a7be5, type: 3}
+  m_Script: {fileID: 11500000, guid: 42268e115bbe84d3bb1f967dd1705500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _productionTime: 5
+--- !u!114 &9132187019183776803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6542774130933437675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c17d4b6939b0f419f9b97683193407f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingType: 1
-  _inProgress: 0
+  ResourceComponent: {fileID: 0}
+  CraftComponent: {fileID: 5501119151638255478}

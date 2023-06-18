@@ -1,14 +1,14 @@
 public class ResourceBuildingController
 {
-	private ResourcesBuilding _building;
+	private ResourceComponent _resourceComponent;
 
 	public ResourceBuildingController(ResourceSettings[] resourceSettings, UIManager uiManager,
-		ResourcesBuilding building)
+		ResourceComponent resourceComponent)
 	{
-		_building = building;
+		_resourceComponent = resourceComponent;
 
 		var window = uiManager.ShowView<ResourceBuildingWindow>();
-		window.Init(resourceSettings, building.ProductionItem, building.InProduction);
+		window.Init(resourceSettings, _resourceComponent.ProductionItem, _resourceComponent.InProduction);
 		window.OnProductionStarted += OnProductionStarted;
 	}
 
@@ -16,11 +16,11 @@ public class ResourceBuildingController
 	{
 		if (start)
 		{
-			_building.CreateItems(craftItem);
+			_resourceComponent.CreateItems(craftItem);
 		}
 		else
 		{
-			_building.StopCreatingItems();
+			_resourceComponent.StopCreatingItems();
 		}
 	}
 }

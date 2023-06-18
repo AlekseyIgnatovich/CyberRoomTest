@@ -1,8 +1,18 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ResourcesBuilding : Building
+public class ResourceComponent : BaseBuildingComponent
 {
+    public enum BuildingState
+    {
+        Idle,
+        Production,
+        ItemInProgress
+    }
+    protected BuildingState _buildingState = BuildingState.Idle;
+    
     public bool InProduction
     {
         get { return _buildingState == BuildingState.Production || _buildingState == BuildingState.ItemInProgress; }
@@ -14,6 +24,7 @@ public class ResourcesBuilding : Building
 
     [SerializeField] private float _productionTime;
 
+    
     public void CreateItems(string item)
     {
         _buildingState = BuildingState.Production;

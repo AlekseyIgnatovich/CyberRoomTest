@@ -69,6 +69,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7085887867320509621, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+    - {fileID: 8365879745495692538, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+    - {fileID: 7338082674334040320, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
 --- !u!1 &6335632559743911948 stripped
 GameObject:
@@ -88,3 +90,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buildingType: 2
+  ResourceComponent: {fileID: 0}
+  CraftComponent: {fileID: 0}

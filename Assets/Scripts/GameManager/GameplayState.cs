@@ -54,13 +54,17 @@ public class GameplayState : BaseGameState
 		switch (building.BuildingType)
 		{
 			case BuildingType.Resources:
-				new ResourceBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (ResourcesBuilding)building);
+				new ResourceBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager,
+					building.GetComponent<ResourceComponent>());
 				break;
 			case BuildingType.Craft:
-				new CraftBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (CraftBuilding)building);
+
+				new CraftBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager,
+					building.GetComponent<CraftComponent>());
 				break;
 			case BuildingType.Market:
-				new MarketBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.Data, _gameManager.UiManager);
+				new MarketBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.Data,
+					_gameManager.UiManager);
 				break;
 			default:
 				Debug.LogError($"Unsupported building type: {building.BuildingType}");

@@ -9,12 +9,17 @@ public class BuildingsManager : MonoBehaviour
 		int resCount = 0;
 		for (int i = 0; i < _buildings.Length; i++)
 		{
-			_buildings[i].Init(data, gameSettings, i);
 			if (_buildings[i].BuildingType == BuildingType.Resources)
 			{
 				_buildings[i].gameObject.SetActive(resCount < data.ResourcesBuildingsCount);
 				resCount++;
 			}
+		}
+
+		var components = GetComponentsInChildren<BaseBuildingComponent>();
+		foreach (var item in components)
+		{
+			item.Init(data, gameSettings);
 		}
 	}
 }

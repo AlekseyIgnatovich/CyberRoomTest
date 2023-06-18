@@ -1,32 +1,33 @@
 public class CraftBuildingController
 {
-    private CraftBuilding _building;
+    private CraftComponent _сraftComponent;
 	
-    public CraftBuildingController(ResourceSettings[] resourceSettings, UIManager uiManager, CraftBuilding building)
+    public CraftBuildingController(ResourceSettings[] resourceSettings, UIManager uiManager, CraftComponent сraftComponent)
     {
-        _building = building;
+        _сraftComponent = сraftComponent;
 	   
         var window = uiManager.ShowView<CraftBuildingWindow>();
-        window.Init(resourceSettings, building.FirstResource, building.SecondResource, building.InProduction);
+        window.Init(resourceSettings, _сraftComponent.FirstResource, _сraftComponent.SecondResource,
+            _сraftComponent.InProduction);
         window.OnCraftSelected += OnCraftSelected;
         window.OnItemsChanged += OnItemsChanged;
     }
 
     private void OnItemsChanged(string res1, string res2)
     {
-        _building.FirstResource = res1;
-        _building.SecondResource = res2;
+        _сraftComponent.FirstResource = res1;
+        _сraftComponent.SecondResource = res2;
     }
 
     private void OnCraftSelected(bool start, string craftItem)
     {
         if (start)
         {
-            _building.CreateItems(craftItem);
+            _сraftComponent.CreateItems(craftItem);
         }
         else
         {
-            _building.StopCreatingItems();
+            _сraftComponent.StopCreatingItems();
         }
     }
 }
