@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UIManager
 {
-    private Dictionary<Type, GameObject> _mediatorMap;
+    private Dictionary<Type, UIBaseView> _mediatorMap;
     private GameObject _uiRoot;
 
     public UIManager(GuiSettings guiSettings)
@@ -15,7 +15,7 @@ public class UIManager
 
     public T ShowView <T>() where T : UIBaseView
     {
-        GameObject prefab = _mediatorMap[typeof(T)];
+        GameObject prefab = _mediatorMap[typeof(T)].gameObject;
         var view  = GameObject.Instantiate(prefab).GetComponent<T>();
         RectTransform prefabTransform = prefab.transform as RectTransform;
         RectTransform viewTransform = view.transform as RectTransform;
@@ -44,12 +44,10 @@ public class UIManager
 
     private void SetupGUIMap(GuiSettings guiSettings)
     {
-        _mediatorMap = new Dictionary<Type, GameObject>();
-        _mediatorMap.Add(typeof(MainMenuWindow), guiSettings.MainMenuWindow);
-        _mediatorMap.Add(typeof(GameplayScreen), guiSettings.GameplayScreen);
-        _mediatorMap.Add(typeof(ResourceBuildingWindow), guiSettings.ResourceBuildingWindow);
-        _mediatorMap.Add(typeof(CraftBuildingWindow), guiSettings.CraftBuildingWindow);
-        _mediatorMap.Add(typeof(MarketBuildingWindow), guiSettings.MarketBuildingWindow);
-        _mediatorMap.Add(typeof(WinWindow), guiSettings.WinWindow);
+        _mediatorMap = new Dictionary<Type, UIBaseView>();
+        foreach (var item in guiSettings.Windows)
+        {
+            _mediatorMap.Add(item.GetType(), item);
+        }
     }
 }

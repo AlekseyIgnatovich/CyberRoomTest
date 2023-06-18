@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Settings", order = 1)]
 public class GameSettings : ScriptableObject
@@ -24,12 +21,7 @@ public class GuiSettings
 {
    public GameObject UIRootPrefab;
 
-   public GameObject MainMenuWindow;//Todo типизировать
-   public GameObject GameplayScreen;
-   public GameObject ResourceBuildingWindow;
-   public GameObject CraftBuildingWindow;
-   public GameObject MarketBuildingWindow;
-   public GameObject WinWindow;
+   public UIBaseView[] Windows;
 }
 
 [Serializable]
@@ -44,7 +36,7 @@ public class ResourceSettings
    public CraftMaterial[] CraftMaterials;
 }
 
-public enum ResourceType
+public enum ResourceType //Todo
 {
    Material,
    CraftableItem
