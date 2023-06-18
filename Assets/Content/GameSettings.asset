@@ -16,34 +16,31 @@ MonoBehaviour:
     Money: 10
   GuiSettings:
     UIRootPrefab: {fileID: 5782626895928360952, guid: 35e931d99a19a4343995d8fbe77ad283, type: 3}
-    MainMenuWindow: {fileID: 4260014542442308746, guid: 89427668c8e204136bdc97ac5f7d5325, type: 3}
-    GameplayScreen: {fileID: 1461109163702730833, guid: 5e20165ac49c64314b3d6198ac00207d, type: 3}
-    ResourceBuildingWindow: {fileID: 5688482236225564607, guid: 161b1ecb7e023414baec12cd0fa6173a, type: 3}
-    CraftBuildingWindow: {fileID: 5591945424853420989, guid: 83361d3df924141c08c45ac57c9598f2, type: 3}
-    MarketBuildingWindow: {fileID: 8423202401726497136, guid: 93b77b6e878c2488884ed42d1a9dd360, type: 3}
-    WinWindow: {fileID: 7395537716659820327, guid: ff85be830135545e5bf8edee85cad27f, type: 3}
+    Windows:
+    - {fileID: 1439302749682915557, guid: 89427668c8e204136bdc97ac5f7d5325, type: 3}
+    - {fileID: 7205337006758582920, guid: 83361d3df924141c08c45ac57c9598f2, type: 3}
+    - {fileID: 1467019190382841967, guid: 5e20165ac49c64314b3d6198ac00207d, type: 3}
+    - {fileID: 4113527770873151532, guid: 93b77b6e878c2488884ed42d1a9dd360, type: 3}
+    - {fileID: 345322994146813414, guid: 161b1ecb7e023414baec12cd0fa6173a, type: 3}
+    - {fileID: 4375416585691829984, guid: ff85be830135545e5bf8edee85cad27f, type: 3}
   ResourceSettings:
   - Id: Stone
     Icon: {fileID: 21300000, guid: f4cb51d82d81a4e21a91dad067e455a0, type: 3}
-    CraftRate: 60
     Type: 0
     Price: 0
     CraftMaterials: []
   - Id: Wood
     Icon: {fileID: 21300000, guid: a30f7888d8a7340a38c296b0a584598d, type: 3}
-    CraftRate: 60
     Type: 0
     Price: 0
     CraftMaterials: []
   - Id: Steel
     Icon: {fileID: 21300000, guid: 1495df9416e8d473a88820c3ab865879, type: 3}
-    CraftRate: 60
     Type: 0
     Price: 0
     CraftMaterials: []
   - Id: Pitchfork
     Icon: {fileID: 21300000, guid: dd8504bc8e4ee43869e5c895699db187, type: 3}
-    CraftRate: 10
     Type: 1
     Price: 1
     CraftMaterials:
@@ -53,7 +50,6 @@ MonoBehaviour:
       Count: 5
   - Id: Hammer
     Icon: {fileID: 21300000, guid: cc8fe7d235e4240b4ba21fd229bb0a1e, type: 3}
-    CraftRate: 10
     Type: 1
     Price: 2
     CraftMaterials:
@@ -63,7 +59,6 @@ MonoBehaviour:
       Count: 5
   - Id: Drill
     Icon: {fileID: 21300000, guid: 1f4289657a8d5439590f7db72f8fe3d1, type: 3}
-    CraftRate: 10
     Type: 1
     Price: 3
     CraftMaterials:
@@ -71,10 +66,3 @@ MonoBehaviour:
       Count: 5
     - Name: Steel
       Count: 5
-  BuildingSettings:
-  - Type: 0
-    ProductionTime: 1
-  - Type: 1
-    ProductionTime: 1
-  - Type: 0
-    ProductionTime: 0

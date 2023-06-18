@@ -7,7 +7,6 @@ public class GameSettings : ScriptableObject
    public WinConditions WinConditions;
    public GuiSettings GuiSettings;
    public ResourceSettings[] ResourceSettings;
-   public BuildingSettings[] BuildingSettings;
 }
 
 [Serializable]
@@ -46,12 +45,5 @@ public class CraftMaterial
 {
    public string Name;
    public int Count;
-}
-
-[Serializable]
-public class BuildingSettings
-{
-   public BuildingType Type;
-   public float ProductionTime;
 }
    

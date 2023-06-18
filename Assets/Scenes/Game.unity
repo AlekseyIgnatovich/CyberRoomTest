@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7085887867320509621, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+      propertyPath: _productionTime
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
 --- !u!4 &374933418 stripped
@@ -305,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 1926346681753265505, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7085887867320509621, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+      propertyPath: _productionTime
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
@@ -473,6 +481,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7085887867320509621, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
+      propertyPath: _productionTime
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddcf1a99a05d4344aee5f04d45a247a, type: 3}
 --- !u!4 &706073393 stripped
@@ -582,6 +594,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 564085772}
     m_Modifications:
+    - target: {fileID: 4686042040319687806, guid: 70228ae66a1654ff38c4bcbf0eb099f6, type: 3}
+      propertyPath: _productionTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6221158065132118052, guid: 70228ae66a1654ff38c4bcbf0eb099f6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -628,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6542774130933437675, guid: 70228ae66a1654ff38c4bcbf0eb099f6, type: 3}
       propertyPath: m_Name
-      value: ProcessingBuilding
+      value: CraftBuilding
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70228ae66a1654ff38c4bcbf0eb099f6, type: 3}
