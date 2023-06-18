@@ -6,11 +6,6 @@ public class GameplayState : BaseGameState
 	private InputController _inputController;
 	private BuildingsManager _buildingsManager;
 
-	private GameplayScreenController _gameplayScreen;
-	private ResourceBuildingController _resourceBuilding;
-	private CraftBuildingController _craftBuilding;
-	private MarketBuildingController _marketBuilding;
-	
 	public GameplayState(GameManager gameManager) : base(gameManager)
 	{
 	}
@@ -24,7 +19,7 @@ public class GameplayState : BaseGameState
 
 	private void OnSceneLoaded(AsyncOperation obj)
 	{
-		_gameplayScreen = new GameplayScreenController(_gameManager);
+		var gameplayScreen = new GameplayScreenController(_gameManager);
 
 		_inputController = GameObject.FindObjectOfType<InputController>();
 		_inputController.OnClickedBuilding += OnBuildingSelected;
@@ -55,15 +50,15 @@ public class GameplayState : BaseGameState
 		switch (building.BuildingType)
 		{
 			case BuildingType.Resources:
-				_resourceBuilding = new ResourceBuildingController(_gameManager.GameSettings.ResourceSettings,
+				var resourceBuilding = new ResourceBuildingController(_gameManager.GameSettings.ResourceSettings,
 					_gameManager.UiManager, building.GetComponent<ResourceComponent>());
 				break;
 			case BuildingType.Craft:
-				_craftBuilding = new CraftBuildingController(_gameManager.GameSettings.ResourceSettings,
+				var craftBuilding = new CraftBuildingController(_gameManager.GameSettings.ResourceSettings,
 					_gameManager.UiManager, building.GetComponent<CraftComponent>());
 				break;
 			case BuildingType.Market:
-				_marketBuilding = new MarketBuildingController(_gameManager.GameSettings.ResourceSettings,
+				var marketBuilding = new MarketBuildingController(_gameManager.GameSettings.ResourceSettings,
 					_gameManager.Data, _gameManager.UiManager);
 				break;
 			default:

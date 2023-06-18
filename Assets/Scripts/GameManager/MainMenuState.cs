@@ -2,8 +2,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuState : BaseGameState
 {
-	private MainMenuController _mainMenuController;
-	
 	public MainMenuState(GameManager gameManager) : base(gameManager)
 	{
 	}
@@ -12,6 +10,6 @@ public class MainMenuState : BaseGameState
 	{
 		SceneManager.LoadScene(Constants.MenuSceneName);
 
-		_mainMenuController = new MainMenuController(_gameManager);
+		var mainMenuController = new MainMenuController(_gameManager);
 	}
 }

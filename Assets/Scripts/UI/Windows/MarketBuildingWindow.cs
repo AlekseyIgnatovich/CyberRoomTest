@@ -30,6 +30,10 @@ public class MarketBuildingWindow : UIBaseView
 
     private void SellClicked()
     {
+        if (string.IsNullOrEmpty(_resourceButton.SelectedResource)) {
+            return;
+        }
+        
         OnSellClicked?.Invoke(_resourceButton.SelectedResource);
     }
 
@@ -37,10 +41,10 @@ public class MarketBuildingWindow : UIBaseView
     {
         if (string.IsNullOrEmpty(_resourceButton.SelectedResource))
         {
-            _price.text = "0";
+            _price.text = "$ 0";
             return;
         }
 
-        _price.text = _resourceSettings.First(r => r.Id == _resourceButton.SelectedResource).Price.ToString();
+        _price.text = "$ " + _resourceSettings.First(r => r.Id == _resourceButton.SelectedResource).Price.ToString();
     }
 }
