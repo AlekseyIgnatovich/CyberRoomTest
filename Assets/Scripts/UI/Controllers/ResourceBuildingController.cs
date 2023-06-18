@@ -1,8 +1,8 @@
-public class ResourceBuildingPresenter
+public class ResourceBuildingController
 {
 	private ResourcesBuilding _building;
 
-	public ResourceBuildingPresenter(ResourceSettings[] resourceSettings, UIManager uiManager,
+	public ResourceBuildingController(ResourceSettings[] resourceSettings, UIManager uiManager,
 		ResourcesBuilding building)
 	{
 		_building = building;

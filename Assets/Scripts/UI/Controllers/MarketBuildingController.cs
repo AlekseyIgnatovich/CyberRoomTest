@@ -1,11 +1,11 @@
 using System.Linq;
 
-public class MarketBuildingPresenter
+public class MarketBuildingController
 {
     private Data _data;
     private ResourceSettings[] _resourceSettings;
 	
-    public MarketBuildingPresenter(ResourceSettings[] resourceSettings, Data data, UIManager uiManager)
+    public MarketBuildingController(ResourceSettings[] resourceSettings, Data data, UIManager uiManager)
     {
         _resourceSettings = resourceSettings;
         _data = data;

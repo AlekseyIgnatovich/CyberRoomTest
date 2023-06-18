@@ -21,6 +21,7 @@ public class GameplayState : BaseGameState
 
 	private void OnSceneLoaded(AsyncOperation obj) //Todo: не очень
 	{
+		var gameplayScreenController = new GameplayScreenController(_gameManager);
 		_gameplayScreen = _gameManager.UiManager.ShowView<GameplayScreen>();
 		_gameplayScreen.Init(_gameManager.Data, _gameManager.GameSettings);
 
@@ -37,7 +38,7 @@ public class GameplayState : BaseGameState
 	{
 		if (money >= _gameManager.GameSettings.WinConditions.Money)
 		{
-			var presenter = new WinWindowPresenter(_gameManager.UiManager);
+			var presenter = new WinWindowController(_gameManager.UiManager);
 			presenter.OnClose += ExitToMenu;
 		}
 	}
@@ -53,13 +54,13 @@ public class GameplayState : BaseGameState
 		switch (building.BuildingType)
 		{
 			case BuildingType.Resources:
-				new ResourceBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (ResourcesBuilding)building);
+				new ResourceBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (ResourcesBuilding)building);
 				break;
 			case BuildingType.Craft:
-				new CraftBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (CraftBuilding)building);
+				new CraftBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.UiManager, (CraftBuilding)building);
 				break;
 			case BuildingType.Market:
-				new MarketBuildingPresenter(_gameManager.GameSettings.ResourceSettings, _gameManager.Data, _gameManager.UiManager);
+				new MarketBuildingController(_gameManager.GameSettings.ResourceSettings, _gameManager.Data, _gameManager.UiManager);
 				break;
 			default:
 				Debug.LogError($"Unsupported building type: {building.BuildingType}");

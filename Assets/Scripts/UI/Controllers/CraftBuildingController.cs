@@ -1,8 +1,8 @@
-public class CraftBuildingPresenter
+public class CraftBuildingController
 {
     private CraftBuilding _building;
 	
-    public CraftBuildingPresenter(ResourceSettings[] resourceSettings, UIManager uiManager, CraftBuilding building)
+    public CraftBuildingController(ResourceSettings[] resourceSettings, UIManager uiManager, CraftBuilding building)
     {
         _building = building;
 	   
