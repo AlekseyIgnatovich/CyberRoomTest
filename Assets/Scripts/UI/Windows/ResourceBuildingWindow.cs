@@ -14,11 +14,11 @@ public class ResourceBuildingWindow : UIBaseView
     {
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(building.ItemInProgress);
+        _startButton.Init(building.InProduction);
         _startButton.OnStarted += OnStarted;
 
-        _resourceButton.Init(resourceSettings, building._productionItem);
-        _resourceButton.Lock(building.ItemInProgress);
+        _resourceButton.Init(resourceSettings, building.ProductionItem);
+        _resourceButton.Lock(building.InProduction);
     }
 
     private void OnStarted(bool start)

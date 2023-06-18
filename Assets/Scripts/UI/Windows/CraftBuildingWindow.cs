@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,11 +23,11 @@ public class CraftBuildingWindow : UIBaseView
         
         _closeButton.onClick.AddListener(Close);
 
-        _startButton.Init(building.CraftActive);
+        _startButton.Init(building.InProduction);
         _startButton.OnStarted += OnStarted;
 
         _resourceButtonFirst.Init(resourceSettings, building.FirstResource);
-        _resourceButtonFirst.Lock(building.CraftActive);
+        _resourceButtonFirst.Lock(building.InProduction);
         _resourceButtonFirst.OnChanged += (res) =>
         {
             building.FirstResource = res;
@@ -38,7 +36,7 @@ public class CraftBuildingWindow : UIBaseView
         };
 
         _resourceButtonSecond.Init(resourceSettings, building.SecondResource);
-        _resourceButtonSecond.Lock(building.CraftActive);
+        _resourceButtonSecond.Lock(building.InProduction);
         _resourceButtonSecond.OnChanged += (res) =>
         {
             building.SecondResource = res;
@@ -92,7 +90,7 @@ public class CraftBuildingWindow : UIBaseView
 
         OnCraftSelected?.Invoke(start, GetCraftItem(_building.FirstResource, _building.SecondResource));
         
-        _resourceButtonFirst.Lock(_building.CraftActive);
-        _resourceButtonSecond.Lock(_building.CraftActive);
+        _resourceButtonFirst.Lock(_building.InProduction);
+        _resourceButtonSecond.Lock(_building.InProduction);
     }
 }

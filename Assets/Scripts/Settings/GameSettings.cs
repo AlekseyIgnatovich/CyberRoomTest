@@ -29,16 +29,15 @@ public class ResourceSettings
 {
    public string Id;
    public Sprite Icon;
-   public int CraftRate;
    public ResourceType Type;
    public int Price;
 
    public CraftMaterial[] CraftMaterials;
 }
 
-public enum ResourceType //Todo
+public enum ResourceType
 {
-   Material,
+   Resource,
    CraftableItem
 }
 

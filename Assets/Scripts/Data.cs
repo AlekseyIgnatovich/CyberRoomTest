@@ -60,7 +60,6 @@ public class Data
 
     public void SaveAll()
     {
-        Debug.LogError("SaveAll");
         foreach (var item in _goods)
         {
             PlayerPrefs.SetInt(GoodPrefsKey + item.Key, item.Value);

@@ -21,11 +21,11 @@ public class ResourceBuildingPresenter
    {
 	   if (start)
 	   {
-		   _building.StartProduction(craftItem);
+		   _building.CreateItems(craftItem);
 	   }
 	   else
 	   {
-		   _building.StopProduction();
+		   _building.StopItemsCreating();
 	   }
    }
 }
